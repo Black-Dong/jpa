@@ -1,7 +1,6 @@
 # JPA-day1
 
 ## 学习JPA的第一天:orm思想和hibernate以及jpa的概述和jpa的基本操作
-day2：springdatajpa的运行原理以及基本操作 day3：多表操作，复杂查询
 
 > ORM
 >> 概念：Object-Relational Mapping，把关系数据库的表结构映射到对象上
