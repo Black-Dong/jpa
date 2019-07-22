@@ -29,7 +29,7 @@ public class Customer {
      *      name: 代表数据库中表的字段的名称
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cust_id")
     private Long custId; //客户主键
 

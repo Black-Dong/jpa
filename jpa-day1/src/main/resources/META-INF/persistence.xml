@@ -29,11 +29,11 @@
                 显示sql: hibernate.show_sql   false(不显示sql)|true(显示sql)
                 自动创建数据库表: hibernate.hbm2ddl.auto
                     create: 程序运行时创建数据库表(如果有表，先删除表再创建)
-                    update: 程序运行时创建表(如果游标不会创建表)
+                    update: 程序运行时创建表(如果有表不会创建表)
                     none: 不会创建表
             -->
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>
