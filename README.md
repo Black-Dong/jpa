@@ -2,7 +2,7 @@
 
 ## Learning JPA
 
-### jpa-day1
+### [jpa-day1](./jpa-day1/README.md)
 
 * 了解`ORM`思想
 
