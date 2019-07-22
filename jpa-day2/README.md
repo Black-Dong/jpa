@@ -29,7 +29,12 @@
 >>>> * 只需要编写dao层接口，不需要编写dao层接口的实现类
 >>>> * dao层接口规范
 >>>>    * 需要继承两个接口（JpaRepository，JpaSpecificationExecutor）
->>>>    * 需要提供相应的泛型
+>>>>    * 需要提供相应的泛型（详见测试类）
+>>>> * 方法：
+>>>>    * findOne（id） ：根据id查询
+>>>>    * save(customer):保存或者更新（依据：传递的实体类对象中，是否包含id属性）
+>>>>    * delete（id） ：根据id删除
+>>>>    * findAll() : 查询全部
 >>
 
 

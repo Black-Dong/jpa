@@ -161,7 +161,7 @@ public class JpaTest {
 
         //3. CRUD操作
         //3.1 查询要修改的对象
-        Customer customer = em.getReference(Customer.class, 1l);
+        Customer customer = em.getReference(Customer.class, 2l);
         //3.2 修改查询出的对象 然后更新
         customer.setCustAddress("内蒙古包头市");
         em.merge(customer);

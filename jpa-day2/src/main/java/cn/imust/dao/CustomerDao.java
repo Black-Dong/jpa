@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *      JpaRepository<T, ID>            * 封装了基本CRUD操作
  *          T: 操作的实体类类型
  *          ID: 实体类中主键属性的类型
- *      JpaSpecificationExecutor<T>     * 封装了复杂查询操作
+ *      JpaSpecificationExecutor<T>     * 封装了复杂查询操作（分页等）
  *          T: 操作的实体类类型
  */
 public interface CustomerDao extends JpaRepository<Customer,Long>, JpaSpecificationExecutor<Customer> {
