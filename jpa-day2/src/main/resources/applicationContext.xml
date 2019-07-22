@@ -64,6 +64,8 @@
 <!--        <property name="dataSource" ref="dataSource"/>-->
     </bean>
 
+    <context:component-scan base-package="cn.imust"/>
+
     <!-- 声明式事务管理 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
@@ -83,5 +85,4 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
     </aop:config>
 
-    <context:component-scan base-package="cn.imust"/>
 </beans>

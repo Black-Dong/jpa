@@ -29,7 +29,7 @@
 >>>> * 只需要编写dao层接口，不需要编写dao层接口的实现类
 >>>> * dao层接口规范
 >>>>    * 需要继承两个接口（JpaRepository，JpaSpecificationExecutor）
->>>>    * 需要提供响应的泛型
+>>>>    * 需要提供相应的泛型
 >>
 
 
