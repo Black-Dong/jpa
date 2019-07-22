@@ -38,6 +38,7 @@ public class JpaTest {
         customer.setCustIndustry("教育");
         //保存
         em.persist(customer);
+
         //5.提交事务(回滚事务)
         tx.commit();
         //6.释放资源
@@ -57,11 +58,13 @@ public class JpaTest {
         EntityTransaction tx = em.getTransaction();
         //3. 开启事务
         tx.begin();
+
         //4. 执行CRUD操作
         Customer customer = new Customer();
         customer.setCustName("内科大");
         customer.setCustIndustry("教育");
         em.persist(customer);
+
         //5. 提交事务
         tx.commit();
         //6. 释放资源，因为实体管理工厂是公共的所以不用释放
@@ -83,10 +86,10 @@ public class JpaTest {
         //2. 开启事务
         EntityTransaction tx = em.getTransaction();
         tx.begin();
+
         //3. CRUD操作
-//        Customer customer = em.find(Customer.class, 1l);
-        Customer customer1 = em.getReference(Customer.class, 1l);
-        System.out.println(customer1);
+        Customer customer = em.find(Customer.class, 1l);
+        System.out.println(customer);
 
         //4. 提交事务
         tx.commit();
@@ -109,8 +112,8 @@ public class JpaTest {
         //2. 开启事务
         EntityTransaction tx = em.getTransaction();
         tx.begin();
+
         //3. CRUD操作
-//        Customer customer = em.find(Customer.class, 1l);
         Customer customer1 = em.getReference(Customer.class, 1l);
         System.out.println(customer1);
 
