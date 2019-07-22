@@ -18,12 +18,18 @@ public class Customer {
     /**
      * @Id: 声明主键的配置
      * @GeneratedValue: 配置主键的生成策略
-     *      strategy = GenerationType.IDENTITY : 自增
+     *      strategy: 真正配置主键生成策略的属性
+     *          GenerationType.IDENTITY : 自增 mysql
+     *              * 底层数据库必须支持自动增长（使用底层数据库支持的自动增长方式，对id自增）
+     *          GenerationType.SEQUENCE : 序列 oracle
+     *              * 底层数据库必须支持序列
+     *          GenerationType.TABLE : JPA提供的机制，通过一张数据库表的形式帮助我们完成主键自增
+     *          GenerationType.AUTO : 程序自动的帮助我们选择主键生成策略
      * @Column: 配置属性和字段的映射关系
      *      name: 代表数据库中表的字段的名称
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cust_id")
     private Long custId; //客户主键
 
