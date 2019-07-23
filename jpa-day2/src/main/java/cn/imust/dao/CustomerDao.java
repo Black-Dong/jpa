@@ -70,4 +70,26 @@ public interface CustomerDao extends JpaRepository<Customer,Long>, JpaSpecificat
     @Query(value = "select * from cst_customer where cust_name like ?", nativeQuery = true)
     public List<Object [] > findSql(String name);
 
+    /**
+     * 方法名约定
+     *      findBy 进行开头 : 查询
+     *          * 后接对象中的属性名称（首字母大写）: 查询条件（默认情况：使用等于的方式查询）
+     *          * 再接查询方式 : like， isnull...
+     *
+     *        eg : findByCustName : 根据客户名称查询
+     *              在springDataJpa的运行阶段
+     *                  会根据方法名称进行解析     findBy  from    xxx(实体类)
+     *                                                   属性名称       where custName =
+     *                  1.findBy + 属性名（首字母大写） : 根据属性查询
+     *                  2.findBy + 属性名（首字母大写）+ 查询方式（Like...） : 根据属性查询
+     *                  3.多条件查询
+     *                       findBy + 属性名（首字母大写）+ 查询方式 + 多条件连接符（And|Or）+ 属性名（首字母大写）+ 查询方式
+     *
+     */
+    public Customer findByCustName(String name);
+    //方法名称规则查询：模糊查询
+    public List<Customer> findByCustNameLike(String name);
+
+    //使用客户名称模糊匹配和客户所属行业精准匹配
+    public List<Customer> findByCustNameLikeAndCustIndustry(String name, String industry);
 }

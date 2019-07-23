@@ -24,9 +24,9 @@ public class JpqlTest {
      * 测试：根据客户名称查询数据
      */
     @Test
-    public void testFindJpql(){
+    public void testFindJpql() {
         List<Customer> customerList = customerDao.findJpql("内科大");
-        for (Customer customer : customerList){
+        for (Customer customer : customerList) {
             System.out.println(customer);
         }
     }
@@ -35,31 +35,31 @@ public class JpqlTest {
      * 根据客户名称和id查询
      */
     @Test
-    public void testFindCustomerByNameAndId(){
+    public void testFindCustomerByNameAndId() {
         Customer customer = customerDao.findCustomerByNameAndId("内科大", 2l);
         System.out.println(customer);
     }
 
     /**
      * 测试： jpql的更新操作
-     *      * SpringDataJpa中使用jpql进行更新/删除
-     *          * 需要手动添加事务
-     *          * 默认执行结束之后，回滚事务 设置@Rollback不自动回滚
+     * * SpringDataJpa中使用jpql进行更新/删除
+     * * 需要手动添加事务
+     * * 默认执行结束之后，回滚事务 设置@Rollback不自动回滚
      */
     @Test
     @Transactional
     @Rollback(value = false)
-    public void testUpdateCustomer(){
-        customerDao.updateCustomer(3l,"内工大");
+    public void testUpdateCustomer() {
+        customerDao.updateCustomer(3l, "内工大");
     }
 
     /**
      * 测试：sql查询全部客户
      */
     @Test
-    public void testFindSql(){
+    public void testFindSql() {
         List<Object[]> list = customerDao.findSql();
-        for (Object[] obj : list){
+        for (Object[] obj : list) {
             System.out.println(Arrays.toString(obj));
         }
     }
@@ -68,10 +68,35 @@ public class JpqlTest {
      * 测试：sql查询 根据名称模糊查询客户
      */
     @Test
-    public void testFindSql2(){
+    public void testFindSql2() {
         List<Object[]> list = customerDao.findSql("内%");
-        for (Object[] obj : list){
+        for (Object[] obj : list) {
             System.out.println(Arrays.toString(obj));
+        }
+    }
+
+    //测试 : 命名规则的查询方式
+    @Test
+    public void testFindByCustName() {
+        Customer customer = customerDao.findByCustName("内科大");
+        System.out.println(customer);
+    }
+
+    //测试 : 命名规则的模糊查询
+    @Test
+    public void testFindByCustNameLike() {
+        List<Customer> customerList = customerDao.findByCustNameLike("内%");
+        for (Customer customer : customerList) {
+            System.out.println(customer);
+        }
+    }
+
+    //测试 : 命名规则的多条件查询方式
+    @Test
+    public void testFindByCustNameLikeAndCustIndustry() {
+        List<Customer> customerList = customerDao.findByCustNameLikeAndCustIndustry("内%", "教育");
+        for (Customer customer : customerList) {
+            System.out.println(customer);
         }
     }
 }
