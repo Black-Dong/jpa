@@ -28,4 +28,13 @@ public class JpqlTest {
             System.out.println(customer);
         }
     }
+
+    /**
+     * 根据客户名称和id查询
+     */
+    @Test
+    public void testFindCustomerByNameAndId(){
+        Customer customer = customerDao.findCustomerByNameAndId("内科大", 2l);
+        System.out.println(customer);
+    }
 }
