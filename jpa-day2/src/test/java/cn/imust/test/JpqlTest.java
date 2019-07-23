@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)     //声明Spring提供的单元测试环境
@@ -50,5 +51,27 @@ public class JpqlTest {
     @Rollback(value = false)
     public void testUpdateCustomer(){
         customerDao.updateCustomer(3l,"内工大");
+    }
+
+    /**
+     * 测试：sql查询全部客户
+     */
+    @Test
+    public void testFindSql(){
+        List<Object[]> list = customerDao.findSql();
+        for (Object[] obj : list){
+            System.out.println(Arrays.toString(obj));
+        }
+    }
+
+    /**
+     * 测试：sql查询 根据名称模糊查询客户
+     */
+    @Test
+    public void testFindSql2(){
+        List<Object[]> list = customerDao.findSql("内%");
+        for (Object[] obj : list){
+            System.out.println(Arrays.toString(obj));
+        }
     }
 }
