@@ -26,6 +26,10 @@
 >>  * 自定义我们自己的Specification实现类实现
 >>      * 实现  
 >>      `Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb); //封装查询条件`
->>          * root：查询的根对象（查询的任何属性都可以从根对象中获取）
+>>          * root：查询的根对象（查询的任何属性都可以从根对象中获取） 通过get方法获取属性
 >>          * CriteriaQuery：顶层查询对象，自定义查询方式（了解：一般不用）
->>          * CriteriaBuilder：查询的构造器，封装了很多的查询条件
+>>          * CriteriaBuilder：查询的构造器，封装了很多的查询条件（模糊，精准...）
+>>              * equal : 直接得到path对象（属性），然后进行比较
+>>              * gt,ge,lt,le,like... : 
+>>                  * 不能直接用path对象比较，需要得到path对象，根据path指定比较的参数类型，然后比较
+>>                  * 指定方式 : path.as(类型的字节码对象)
