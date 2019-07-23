@@ -4,6 +4,7 @@ package cn.imust.dao;
 import cn.imust.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface CustomerDao extends JpaRepository<Customer,Long>, JpaSpecificat
      *  jpql: from Customer where custName like ?
      *  配置jpql语句：使用@Query注解
      */
-    @Query(value = "from Customer where custName = ?")
+    @Query(value = "from Customer where custName = ?1")
     public List<Customer> findJpql(String custName);
 
     /**
@@ -36,7 +37,19 @@ public interface CustomerDao extends JpaRepository<Customer,Long>, JpaSpecificat
      *      默认赋值的时候，占位符位置需要和参数位置保持一致
      *      也可以指定占位符取值来源    eg: ?1 ?2 ?3 ...
      */
-    @Query(value = "from Customer where custName = ? and custId = ?")
+    @Query(value = "from Customer where custName = ?1 and custId = ?2")
     public Customer findCustomerByNameAndId(String custName, Long custId);
+
+    /**
+     * 使用jpql完成更新操作
+     *      案例 : 根据id更新客户名称
+     *      sql : update cst_customer set cust_name = ? where cust_id = ?
+     *      jpql : update Customer set custName = ? where custId = ?
+     * @Query : 代表的是查询
+     *      * 声明此方法是进行更新操作的
+     */
+    @Modifying
+    @Query(value = "update Customer set custName = ?2 where custId = ?1")
+    public void updateCustomer(Long custId, String custName);
 
 }
