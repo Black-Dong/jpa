@@ -28,7 +28,7 @@
 >>> 2、编写一个符合springDataJpa的dao层接口
 >>>> * 只需要编写dao层接口，不需要编写dao层接口的实现类
 >>>> * dao层接口规范
->>>>    * 需要继承两个接口（JpaRepository，JpaSpecificationExecutor）
+>>>>    * 需要继承两个接口（JpaRepository --提供简单CRUD，JpaSpecificationExecutor --提供复杂查询）
 >>>>    * 需要提供相应的泛型（详见测试类）
 >>>> * 方法：
 >>>>    * findOne（id） ：根据id查询
@@ -40,6 +40,19 @@
 >>>> * 当使用@Autowired按类型自动注入dao时，通过JdkDynamicAopProxy的invoke方法创建了一个动态代理对象(SimpleJpaRepository)
 >>>> * SimpleJpaRepository当中封装了JPA的操作(借助JPA的api完成数据库的CRUD操作)
 >>>> * 通过hibernate完成数据库操作(封装了jdbc操作)
-
+>>>
+>>> 4、复杂查询
+>>>> * 借助接口中定义好的方法完成查询 eg: findOne(id)...
+>>>> * jpql的查询方法
+>>>>    * jpql : jpa query language (jpa查询语言)
+>>>>    * 特点 : 
+>>>>        * 语法或关键字和sql语句类似
+>>>>        * 查询的是类和类中属性
+>>>>    * 需要将jpql语句配置到接口方法上
+>>>>        * 特有的查询：需要在dao接口中配置方法
+>>>>        * 在新添加的方法上，使用注解的形式配置jpql查询语句
+>>>>        * 注解：@Query
+>>>>    
+>>>>    
 
 

@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -72,5 +73,44 @@ public class CustomerDaoTest {
         for (Customer customer : customerList){
             System.out.println(customer);
         }
+    }
+
+    /**
+     * 测试统计查询，查询客户总数量
+     *      count: 统计总条数
+     */
+    @Test
+    public void testCount(){
+        long count = customerDao.count(); //查询全部客户返回值
+        System.out.println(count);
+    }
+
+    /**
+     *  测试：判断id为？的客户是否存在
+     *      1. 可以根据id查询用户
+     *      2. 查询根据id查询数量
+     */
+    @Test
+    public void testExists(){
+        boolean exists = customerDao.exists(4l);
+        System.out.println(exists);
+    }
+
+    /**
+     *  根据id查询用户
+     *      使用getOne方法需要加上@Transactional 事务，保证getOne可以正常运行
+     *
+     *  findOne:
+     *      底层调用 em.find()          立即加载
+     *  getOne:
+     *      底层调用 em.getReference    延迟加载
+     *      * 返回一个客户动态代理对象
+     *      * 什么时候使用，什么时候进行查询
+     */
+    @Test
+    @Transactional
+    public void testGetOne(){
+        Customer customer = customerDao.getOne(1l);
+        System.out.println(customer);
     }
 }
