@@ -1,7 +1,6 @@
 # JPA-day2
 
-## 学习JPA的第一天:springdatajpa的运行原理以及基本操作
- day3：多表操作，复杂查询
+## 学习JPA的第二天:springdatajpa的运行原理以及基本操作
 > springDataJpa的概述:
 >>
 >> 概述：
@@ -28,7 +27,7 @@
 >>> 2、编写一个符合springDataJpa的dao层接口
 >>>> * 只需要编写dao层接口，不需要编写dao层接口的实现类
 >>>> * dao层接口规范
->>>>    * 需要继承两个接口（JpaRepository --提供简单CRUD，JpaSpecificationExecutor --提供复杂查询）
+>>>>    * 需要继承两个接口（JpaRepository --提供CRUD，JpaSpecificationExecutor --提供动态查询）
 >>>>    * 需要提供相应的泛型（详见测试类）
 >>>> * 方法：
 >>>>    * findOne（id） ：根据id查询

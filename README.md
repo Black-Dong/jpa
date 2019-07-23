@@ -21,3 +21,11 @@
 * SpringDataJpa的运行过程和原理分析
 
 * 复杂查询
+
+### [jpa-day3](./jpa-day3-spec/README.md)
+
+* Specifications动态查询
+
+* 多表之间的关系和操作多表的操作步骤
+
+* 完成多表操作
