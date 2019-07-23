@@ -35,6 +35,11 @@
 >>>>    * save(customer):保存或者更新（依据：传递的实体类对象中，是否包含id属性）
 >>>>    * delete（id） ：根据id删除
 >>>>    * findAll() : 查询全部
->>
+>>>
+>>> 3、SpringDataJpa的运行过程和原理分析
+>>>> * 当使用@Autowired按类型自动注入dao时，通过JdkDynamicAopProxy的invoke方法创建了一个动态代理对象(SimpleJpaRepository)
+>>>> * SimpleJpaRepository当中封装了JPA的操作(借助JPA的api完成数据库的CRUD操作)
+>>>> * 通过hibernate完成数据库操作(封装了jdbc操作)
+
 
 

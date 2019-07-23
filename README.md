@@ -12,4 +12,12 @@
 
 * 使用jpql查询对用户进行操作（查询全部，统计，分页，排序，模糊）
 
+### [jpa-day2](./jpa-day2/README.md)
 
+* SpringDataJpa的概述
+
+* SpringDataJpa入门操作
+
+* SpringDataJpa的运行过程和原理分析
+
+* 复杂查询
