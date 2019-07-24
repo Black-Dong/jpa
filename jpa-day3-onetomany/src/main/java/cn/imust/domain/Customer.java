@@ -1,5 +1,7 @@
 package cn.imust.domain;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -51,11 +53,21 @@ public class Customer {
      *              name : 外键字段名称（数据库中）
      *              referencedColumnName : 参照的主表的字段名称
      *   * 在配置外键时，在主表的一方添加了外键配置，对于主表而言，他也具备了维护外键的作用
+     *   * 但是这样会使保存时多执行一次update，所以最好放弃主表对外键的维护权 （配置mapperBy属性）
+     *   * 在@OneToMany中添加cascade属性开启级联
      */
-    @OneToMany(targetEntity = LinkMan.class)
-    @JoinColumn(name = "lkm_cust_id",referencedColumnName = "cust_id")
+//    @OneToMany(targetEntity = LinkMan.class)
+//    @JoinColumn(name = "lkm_cust_id",referencedColumnName = "cust_id")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)   //该customer是从表的属性，表示主表对放弃对外键的维护，参照从表customer属性
     private Set<LinkMan> linkMans = new HashSet<>();
 
+    public Set<LinkMan> getLinkMans() {
+        return linkMans;
+    }
+
+    public void setLinkMans(Set<LinkMan> linkMans) {
+        this.linkMans = linkMans;
+    }
 
     public Long getCustId() {
         return custId;
