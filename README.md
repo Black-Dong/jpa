@@ -22,10 +22,18 @@
 
 * 复杂查询
 
-### [jpa-day3](./jpa-day3-spec/README.md)
+### [jpa-day3-spec](./jpa-day3-spec/README.md)
 
 * Specifications动态查询
 
 * 多表之间的关系和操作多表的操作步骤
 
 * 完成多表操作
+
+### [jpa-day3-onetomany](./jpa-day3-onetomany/README.md)
+
+* 一对多操作
+
+*
+
+*
